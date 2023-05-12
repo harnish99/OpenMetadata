@@ -37,18 +37,25 @@ jobs:
       - name: Install antlr cli
         run: |
           sudo make install_antlr_cli
-
-      - name: Build OpenMetadata Server Application
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+            
+      - name: path
         run: |
-          mvn -DskipTests clean package
+          pwd
+          locate prakashdata-dist
+          ls
 
-      - name: Upload OpenMetadata application to Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: openmetadata-binary
-          path: /home/runner/work/OpenMetadata/OpenMetadata/openmetadata-dist/target/*.tar.gz
+#       - name: Build OpenMetadata Server Application
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         run: |
+#           mvn -DskipTests clean package
+
+#       - name: Upload OpenMetadata application to Artifact
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: openmetadata-binary
+#           path: /home/runner/work/OpenMetadata/OpenMetadata/openmetadata-dist/target/*.tar.gz
  
 #   release-project-event-release:
 #     if: github.event_name == 'release'
