@@ -14,6 +14,7 @@ phases:
     commands:
       # Build the Docker image
       - yum install -y docker
+      - systemctl start docker.service
       - docker pull ubuntu:latest
       # Authenticate Docker with ECR
       - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s6h3m1v6
