@@ -14,7 +14,8 @@ phases:
     commands:
       # Build the Docker image
       - yum install -y docker
-      - service docker start
+      - systemctl enable docker.service
+      - systemctl start docker.service
 
       - docker pull ubuntu:latest
       # Authenticate Docker with ECR
