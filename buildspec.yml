@@ -4,16 +4,16 @@ phases:
   pre_build:
     commands:
       # Install and configure AWS CLI
-      - sudo yum update -y
+      - yum update -y
       - curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
       - unzip awscliv2.zip
-      - sudo ./aws/install
+      - ./aws/install
 #       - apt-get install -y awscli
 
   build:
     commands:
       # Build the Docker image
-      - sudo yum install -y docker
+      - yum install -y docker
       - docker pull ubuntu:latest
       # Authenticate Docker with ECR
       - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s6h3m1v6
