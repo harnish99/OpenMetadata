@@ -1,1 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      # Install and configure AWS CLI
+      - apt-get install -y awscli
+
+  build:
+    commands:
+      # Build the Docker image
+      - docker pull ubuntu:latest
+      # Authenticate Docker with ECR
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s6h3m1v6
+#       - $(aws ecr get-login --no-include-email --region your-aws-region)
+      # Tag the Docker image
+      - docker tag ubuntu:latest public.ecr.aws/s6h3m1v6/ubuntu:latest
+
+  post_build:
+    commands:
+#       docker tag ubuntu:latest public.ecr.aws/s6h3m1v6/ubuntu:latest
+      # Push the Docker image to ECR
+      - docker push public.ecr.aws/s6h3m1v6/ubuntu:latest
+#       - docker push your-ecr-repo-url/my_image:tag
 
