@@ -18,10 +18,10 @@ phases:
       - mvn clean install -DskipTests
       - pwd
   
-  artifacts:
-    files:
-      - /OpenMetadata/openmetadata-dist/target/*.tar.gz
-    name: mytarfile 
+#   artifacts:
+#     files:
+#       - /OpenMetadata/openmetadata-dist/target/*.tar.gz
+#     name: mytarfile 
   
 #   artifacts:
 #   files:
@@ -29,10 +29,10 @@ phases:
 #    name: myname-$AWS_REGION
 #   discard-paths: yes
 
-#   post_build:
-#     commands:
-#       - echo "Post-build steps go here"
-#       - aws s3 cp /home/runner/work/OpenMetadata/OpenMetadata/openmetadata-dist/target/*.tar.gz s3://myartifactbucket-1/openmetadata-binary/
+  post_build:
+    commands:
+      - echo "Post-build steps go here"
+      - aws s3 cp /home/runner/work/OpenMetadata/OpenMetadata/openmetadata-dist/target/*.tar.gz s3://myartifactbucket-1/openmetadata-binary/
 
 # version: 0.2
 
