@@ -16,10 +16,17 @@ phases:
   build:
     commands:
       - mvn clean install -DskipTests
-      
+      - pwd
+  
   artifacts:
-  files:
-    - /home/runner/work/OpenMetadata/OpenMetadata/openmetadata-dist/target/*.tar.gz
+    files:
+      - /OpenMetadata/openmetadata-dist/target/*.tar.gz
+    name: mytarfile 
+  
+#   artifacts:
+#   files:
+#     - /home/runner/work/OpenMetadata/OpenMetadata/openmetadata-dist/target/*.tar.gz
+#    name: myname-$AWS_REGION
 #   discard-paths: yes
 
 #   post_build:
